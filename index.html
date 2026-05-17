@@ -1,0 +1,2067 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Beena's Closet—Timeless Elegance, Just for You</title>
+  <meta name="description"
+    content="Beena's Closet crafts handcrafted high-end luxury jewelry, royal Kundan chokers, and designer chains. Curated by Beena John, serving clients in Mumbai, US, and globally.">
+  <meta name="keywords"
+    content="fine jewelry, luxury chokers, kundan jewelry, gold plated necklace, beenas closet, beena john, mumbai jewelry, us jewelry">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --black: #0B0B0B;
+      --ivory: #F8F5F2;
+      --gold: #C6A769;
+      --gold-light: #D4B87A;
+      --gold-dark: #A88A50;
+      --text-muted: #7a7068;
+      --border: rgba(198, 167, 105, 0.18);
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      background: var(--black);
+      color: var(--ivory);
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      overflow-x: hidden;
+      cursor: none;
+    }
+
+    /* ── Custom Cursor ── */
+    .cursor {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 9999;
+      pointer-events: none;
+    }
+
+    .cursor-dot {
+      width: 6px;
+      height: 6px;
+      background: var(--gold);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      transition: transform 0.1s;
+    }
+
+    .cursor-ring {
+      width: 36px;
+      height: 36px;
+      border: 1px solid rgba(198, 167, 105, 0.5);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      transition: transform 0.18s cubic-bezier(.25, .46, .45, .94), width 0.3s, height 0.3s, border-color 0.3s;
+    }
+
+    body.cursor-hover .cursor-ring {
+      width: 56px;
+      height: 56px;
+      border-color: var(--gold);
+    }
+
+    /* ── Nav ── */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 28px 60px;
+      transition: background 0.5s, padding 0.4s;
+    }
+
+    nav.scrolled {
+      background: rgba(11, 11, 11, 0.94);
+      backdrop-filter: blur(12px);
+      padding: 18px 60px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      font-weight: 400;
+      letter-spacing: 0.22em;
+      color: var(--ivory);
+      text-transform: uppercase;
+      text-decoration: none;
+    }
+
+    .nav-logo span {
+      color: var(--gold);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 44px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 400;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(248, 245, 242, 0.7);
+      text-decoration: none;
+      transition: color 0.3s;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -3px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: var(--gold);
+      transition: width 0.35s;
+    }
+
+    .nav-links a:hover {
+      color: var(--gold);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-cta {
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 10px 26px;
+      border: 1px solid var(--gold);
+      color: var(--gold) !important;
+      transition: background 0.3s, color 0.3s !important;
+    }
+
+    .nav-cta:hover {
+      background: var(--gold) !important;
+      color: var(--black) !important;
+    }
+
+    .nav-cta::after {
+      display: none !important;
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: none;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 1px;
+      background: var(--ivory);
+      transition: 0.3s;
+    }
+
+    /* ── Hero ── */
+    #hero {
+      position: relative;
+      height: 100vh;
+      min-height: 700px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% 40%, rgba(11, 11, 11, 0.8) 0%, rgba(11, 11, 11, 0.98) 75%), url('hero_jewelry.png');
+      background-size: cover;
+      background-position: center;
+    }
+
+    .hero-bg::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 40% 40% at 20% 30%, rgba(198, 167, 105, 0.07) 0%, transparent 70%),
+        radial-gradient(ellipse 30% 50% at 80% 70%, rgba(198, 167, 105, 0.05) 0%, transparent 70%);
+    }
+
+    .hero-ornament {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: min(700px, 90vw);
+      height: min(700px, 90vw);
+      border: 1px solid rgba(198, 167, 105, 0.08);
+      border-radius: 50%;
+      animation: rotate-ring 40s linear infinite;
+    }
+
+    .hero-ornament::before {
+      content: '';
+      position: absolute;
+      inset: 30px;
+      border: 1px solid rgba(198, 167, 105, 0.05);
+      border-radius: 50%;
+      animation: rotate-ring 60s linear infinite reverse;
+    }
+
+    @keyframes rotate-ring {
+      to {
+        transform: translate(-50%, -50%) rotate(360deg);
+      }
+    }
+
+    .hero-petal {
+      position: absolute;
+      opacity: 0;
+      animation: petal-fall 8s ease-in infinite;
+      font-size: 1.2rem;
+    }
+
+    @keyframes petal-fall {
+      0% {
+        opacity: 0;
+        transform: translateY(-20px) rotate(0deg);
+      }
+
+      10% {
+        opacity: 0.4;
+      }
+
+      90% {
+        opacity: 0.1;
+      }
+
+      100% {
+        opacity: 0;
+        transform: translateY(100vh) rotate(360deg);
+      }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 0 20px;
+    }
+
+    .hero-eyebrow {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 28px;
+      opacity: 0;
+      animation: fade-up 1s 0.3s forwards;
+    }
+
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3.4rem, 9vw, 8rem);
+      font-weight: 300;
+      line-height: 0.95;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--ivory);
+      opacity: 0;
+      animation: fade-up 1s 0.6s forwards;
+    }
+
+    .hero-title em {
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    .hero-subtitle {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1rem, 2vw, 1.4rem);
+      font-weight: 300;
+      font-style: italic;
+      color: rgba(248, 245, 242, 0.55);
+      margin: 24px 0 48px;
+      letter-spacing: 0.12em;
+      opacity: 0;
+      animation: fade-up 1s 0.9s forwards;
+    }
+
+    .hero-btn {
+      display: inline-block;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--black);
+      background: var(--gold);
+      padding: 16px 48px;
+      text-decoration: none;
+      position: relative;
+      overflow: hidden;
+      opacity: 0;
+      animation: fade-up 1s 1.2s forwards;
+      transition: letter-spacing 0.3s;
+    }
+
+    .hero-btn::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--gold-light);
+      transform: translateX(-101%);
+      transition: transform 0.4s cubic-bezier(.77, 0, .18, 1);
+    }
+
+    .hero-btn:hover {
+      letter-spacing: 0.4em;
+    }
+
+    .hero-btn:hover::before {
+      transform: translateX(0);
+    }
+
+    .hero-btn span {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      opacity: 0;
+      animation: fade-up 1s 1.8s forwards;
+    }
+
+    .hero-scroll span {
+      font-size: 0.62rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: rgba(248, 245, 242, 0.4);
+    }
+
+    .scroll-line {
+      width: 1px;
+      height: 50px;
+      background: linear-gradient(to bottom, var(--gold), transparent);
+      animation: scroll-pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes scroll-pulse {
+
+      0%,
+      100% {
+        opacity: 0.3;
+      }
+
+      50% {
+        opacity: 1;
+      }
+    }
+
+    @keyframes fade-up {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ── Section Shared ── */
+    section {
+      padding: 120px 60px;
+    }
+
+    .section-eyebrow {
+      font-size: 0.65rem;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.2rem, 5vw, 4rem);
+      font-weight: 300;
+      line-height: 1.1;
+      letter-spacing: 0.04em;
+    }
+
+    .section-title em {
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    .gold-line {
+      width: 60px;
+      height: 1px;
+      background: linear-gradient(to right, var(--gold), transparent);
+      margin: 28px 0;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-delay-1 {
+      transition-delay: 0.1s;
+    }
+
+    .reveal-delay-2 {
+      transition-delay: 0.22s;
+    }
+
+    .reveal-delay-3 {
+      transition-delay: 0.34s;
+    }
+
+    .reveal-delay-4 {
+      transition-delay: 0.46s;
+    }
+
+    /* ── About ── */
+    #about {
+      background: var(--black);
+      position: relative;
+      overflow: hidden;
+    }
+
+    #about::before {
+      content: "Beena's Closet";
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22vw;
+      font-weight: 300;
+      letter-spacing: 0.1em;
+      color: rgba(198, 167, 105, 0.03);
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      white-space: nowrap;
+      pointer-events: none;
+    }
+
+    .about-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 100px;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .about-visual {
+      position: relative;
+      aspect-ratio: 3/4;
+    }
+
+    .about-frame {
+      position: absolute;
+      inset: 0;
+      border: 1px solid var(--border);
+    }
+
+    .about-frame::before {
+      content: '';
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      right: -20px;
+      bottom: -20px;
+      border: 1px solid rgba(198, 167, 105, 0.06);
+    }
+
+    .about-img-placeholder {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, #1a1208 0%, #0d0d0d 50%, #161008 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+    }
+
+    .about-img-placeholder svg {
+      opacity: 0.35;
+    }
+
+    .about-img-placeholder p {
+      font-size: 0.65rem;
+      letter-spacing: 0.25em;
+      color: rgba(198, 167, 105, 0.4);
+      text-transform: uppercase;
+    }
+
+    .about-corner {
+      position: absolute;
+      width: 24px;
+      height: 24px;
+    }
+
+    .about-corner.tl {
+      top: -1px;
+      left: -1px;
+      border-top: 2px solid var(--gold);
+      border-left: 2px solid var(--gold);
+    }
+
+    .about-corner.tr {
+      top: -1px;
+      right: -1px;
+      border-top: 2px solid var(--gold);
+      border-right: 2px solid var(--gold);
+    }
+
+    .about-corner.bl {
+      bottom: -1px;
+      left: -1px;
+      border-bottom: 2px solid var(--gold);
+      border-left: 2px solid var(--gold);
+    }
+
+    .about-corner.br {
+      bottom: -1px;
+      right: -1px;
+      border-bottom: 2px solid var(--gold);
+      border-right: 2px solid var(--gold);
+    }
+
+    .about-text p {
+      line-height: 1.9;
+      color: rgba(248, 245, 242, 0.6);
+      font-size: 0.97rem;
+      margin-bottom: 18px;
+    }
+
+    .about-text p strong {
+      color: var(--gold);
+      font-weight: 400;
+    }
+
+    .about-stats {
+      display: flex;
+      gap: 48px;
+      margin-top: 40px;
+      padding-top: 40px;
+      border-top: 1px solid var(--border);
+    }
+
+    .stat-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.6rem;
+      font-weight: 300;
+      color: var(--gold);
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(248, 245, 242, 0.4);
+      margin-top: 6px;
+    }
+
+    /* ── Marquee ── */
+    .marquee-wrap {
+      padding: 28px 0;
+      background: var(--gold);
+      overflow: hidden;
+    }
+
+    .marquee-track {
+      display: flex;
+      gap: 0;
+      animation: marquee 20s linear infinite;
+      white-space: nowrap;
+    }
+
+    .marquee-item {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      padding: 0 32px;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem;
+      font-style: italic;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      color: var(--black);
+    }
+
+    .marquee-dot {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--black);
+      opacity: 0.5;
+    }
+
+    @keyframes marquee {
+      to {
+        transform: translateX(-50%);
+      }
+    }
+
+    /* ── Collections ── */
+    #collections {
+      background: var(--ivory);
+      color: var(--black);
+    }
+
+    #collections .section-title {
+      color: var(--black);
+    }
+
+    #collections .section-eyebrow {
+      color: var(--gold-dark);
+    }
+
+    #collections .gold-line {
+      background: linear-gradient(to right, var(--gold-dark), transparent);
+    }
+
+    .collections-intro {
+      font-size: 0.97rem;
+      color: rgba(11, 11, 11, 0.55);
+      max-width: 560px;
+      line-height: 1.8;
+    }
+
+    .collections-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 70px;
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
+      flex-wrap: wrap;
+      gap: 32px;
+    }
+
+    .collections-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .collection-card {
+      position: relative;
+      aspect-ratio: 3/4;
+      overflow: hidden;
+      cursor: none;
+    }
+
+    .collection-card:first-child {
+      grid-column: span 2;
+      aspect-ratio: 6/4;
+    }
+
+    .card-bg {
+      position: absolute;
+      inset: 0;
+      transition: transform 0.7s cubic-bezier(.25, .46, .45, .94);
+    }
+
+    .collection-card:hover .card-bg {
+      transform: scale(1.06);
+    }
+
+    /* Item Background Classes defined inline for robustness */
+
+    .card-icon {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      opacity: 0.12;
+      font-size: 5rem;
+      transition: opacity 0.4s;
+    }
+
+    .collection-card:hover .card-icon {
+      opacity: 0.06;
+    }
+
+    .card-content {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 36px 32px;
+      background: linear-gradient(to top, rgba(11, 11, 11, 0.85) 0%, transparent 55%);
+    }
+
+    .card-tag {
+      font-size: 0.6rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 10px;
+    }
+
+    .card-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.4rem, 2.5vw, 2rem);
+      font-weight: 300;
+      color: var(--ivory);
+      line-height: 1.1;
+      margin-bottom: 14px;
+    }
+
+    .card-desc {
+      font-size: 0.78rem;
+      color: rgba(248, 245, 242, 0.5);
+      line-height: 1.7;
+      max-width: 340px;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, opacity 0.4s;
+      opacity: 0;
+    }
+
+    .collection-card:hover .card-desc {
+      max-height: 80px;
+      opacity: 1;
+    }
+
+    .card-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 18px;
+      font-size: 0.65rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      text-decoration: none;
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity 0.4s 0.1s, transform 0.4s 0.1s;
+    }
+
+    .collection-card:hover .card-link {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .card-link::after {
+      content: '→';
+      transition: transform 0.3s;
+    }
+
+    .card-link:hover::after {
+      transform: translateX(4px);
+    }
+
+    /* ── Signature Concept ── */
+    #concept {
+      background: var(--black);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .concept-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+
+    .concept-left {
+      padding-right: 80px;
+      padding-top: 20px;
+      border-right: 1px solid var(--border);
+    }
+
+    .concept-tagline {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 300;
+      font-style: italic;
+      color: var(--gold);
+      line-height: 1.2;
+      margin: 32px 0 48px;
+    }
+
+    .concept-right {
+      padding-left: 80px;
+    }
+
+    .concept-pillars {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .pillar {
+      padding: 36px 0;
+      border-bottom: 1px solid var(--border);
+      display: grid;
+      grid-template-columns: 60px 1fr;
+      gap: 24px;
+      align-items: start;
+    }
+
+    .pillar:first-child {
+      padding-top: 0;
+    }
+
+    .pillar-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      font-weight: 300;
+      color: rgba(198, 167, 105, 0.3);
+      line-height: 1;
+    }
+
+    .pillar-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      font-weight: 400;
+      color: var(--ivory);
+      margin-bottom: 10px;
+    }
+
+    .pillar-text {
+      font-size: 0.88rem;
+      color: rgba(248, 245, 242, 0.45);
+      line-height: 1.8;
+    }
+
+    /* ── Gallery ── */
+    #gallery {
+      background: #0d0c0a;
+      padding-bottom: 80px;
+    }
+
+    .gallery-header {
+      max-width: 1200px;
+      margin: 0 auto 60px;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      grid-template-rows: repeat(2, 260px);
+      gap: 3px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .gallery-cell {
+      overflow: hidden;
+      position: relative;
+      cursor: none;
+    }
+
+    .gallery-cell:nth-child(1) {
+      grid-column: span 5;
+      grid-row: span 2;
+    }
+
+    .gallery-cell:nth-child(2) {
+      grid-column: span 4;
+    }
+
+    .gallery-cell:nth-child(3) {
+      grid-column: span 3;
+    }
+
+    .gallery-cell:nth-child(4) {
+      grid-column: span 3;
+    }
+
+    .gallery-cell:nth-child(5) {
+      grid-column: span 4;
+    }
+
+    .gallery-inner {
+      position: absolute;
+      inset: 0;
+      transition: transform 0.7s cubic-bezier(.25, .46, .45, .94);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .gallery-cell:hover .gallery-inner {
+      transform: scale(1.05);
+    }
+
+    /* Gallery Inner Background Classes defined inline for robustness */
+
+    .gallery-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(11, 11, 11, 0.6) 0%, transparent 50%);
+      opacity: 0;
+      transition: opacity 0.4s;
+    }
+
+    .gallery-cell:hover .gallery-overlay {
+      opacity: 1;
+    }
+
+    .gallery-label {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      font-size: 0.62rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: rgba(248, 245, 242, 0.7);
+      opacity: 0;
+      transform: translateY(6px);
+      transition: opacity 0.4s, transform 0.4s;
+    }
+
+    .gallery-cell:hover .gallery-label {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .gallery-icon {
+      font-size: 3rem;
+      opacity: 0.08;
+    }
+
+    .gallery-cell:nth-child(1) .gallery-icon {
+      font-size: 5rem;
+    }
+
+    /* ── Testimonials ── */
+    #testimonials {
+      background: var(--ivory);
+      color: var(--black);
+    }
+
+    #testimonials .section-eyebrow {
+      color: var(--gold-dark);
+    }
+
+    .testimonials-wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      margin-top: 60px;
+    }
+
+    .testimonial-card {
+      background: var(--black);
+      padding: 48px 36px;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s;
+    }
+
+    .testimonial-card:hover {
+      transform: translateY(-4px);
+    }
+
+    .testimonial-card::before {
+      content: '\201C';
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 7rem;
+      color: rgba(198, 167, 105, 0.08);
+      position: absolute;
+      top: -10px;
+      left: 20px;
+      line-height: 1;
+    }
+
+    .testimonial-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.05rem;
+      font-style: italic;
+      font-weight: 400;
+      color: var(--ivory);
+      line-height: 1.8;
+      margin-bottom: 32px;
+      position: relative;
+    }
+
+    .testimonial-author {
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .testimonial-role {
+      font-size: 0.62rem;
+      color: rgba(248, 245, 242, 0.3);
+      margin-top: 4px;
+      letter-spacing: 0.1em;
+    }
+
+    .testimonial-stars {
+      color: var(--gold);
+      font-size: 0.7rem;
+      margin-bottom: 20px;
+    }
+
+    /* ── CTA ── */
+    #cta {
+      background: var(--black);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      padding: 160px 60px;
+    }
+
+    #cta::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(198, 167, 105, 0.06) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    .cta-inner {
+      position: relative;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .cta-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.4rem, 6vw, 5rem);
+      font-weight: 300;
+      line-height: 1.05;
+      margin: 20px 0 40px;
+    }
+
+    .cta-title em {
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    .cta-sub {
+      font-size: 0.9rem;
+      color: rgba(248, 245, 242, 0.45);
+      line-height: 1.9;
+      margin-bottom: 52px;
+    }
+
+    .cta-btn {
+      display: inline-block;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid var(--gold);
+      padding: 18px 56px;
+      text-decoration: none;
+      position: relative;
+      overflow: hidden;
+      transition: color 0.4s;
+    }
+
+    .cta-btn::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--gold);
+      transform: translateY(101%);
+      transition: transform 0.4s cubic-bezier(.77, 0, .18, 1);
+    }
+
+    .cta-btn:hover {
+      color: var(--black);
+    }
+
+    .cta-btn:hover::before {
+      transform: translateY(0);
+    }
+
+    .cta-btn span {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ── Custom Order Form ── */
+    #order {
+      background: #0d0c0a;
+      padding: 120px 60px;
+    }
+
+    .order-inner {
+      max-width: 820px;
+      margin: 0 auto;
+    }
+
+    .order-header {
+      margin-bottom: 60px;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+    }
+
+    .form-field {
+      position: relative;
+      background: rgba(248, 245, 242, 0.03);
+      border: 1px solid rgba(248, 245, 242, 0.06);
+      transition: border-color 0.3s;
+    }
+
+    .form-field:focus-within {
+      border-color: rgba(198, 167, 105, 0.4);
+    }
+
+    .form-field.full {
+      grid-column: span 2;
+    }
+
+    .form-field label {
+      display: block;
+      font-size: 0.6rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: rgba(198, 167, 105, 0.6);
+      padding: 16px 20px 4px;
+    }
+
+    .form-field input,
+    .form-field select,
+    .form-field textarea {
+      width: 100%;
+      background: none;
+      border: none;
+      outline: none;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 300;
+      color: var(--ivory);
+      padding: 4px 20px 16px;
+    }
+
+    .form-field textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+
+    .form-field select option {
+      background: #1a1612;
+    }
+
+    .form-submit {
+      grid-column: span 2;
+      background: var(--gold);
+      border: none;
+      cursor: none;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--black);
+      padding: 20px;
+      width: 100%;
+      margin-top: 2px;
+      position: relative;
+      overflow: hidden;
+      transition: background 0.3s, letter-spacing 0.3s;
+    }
+
+    .form-submit:hover {
+      background: var(--gold-light);
+      letter-spacing: 0.4em;
+    }
+
+    /* ── Footer ── */
+    footer {
+      background: var(--black);
+      border-top: 1px solid var(--border);
+      padding: 80px 60px 40px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 60px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .footer-brand-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      font-weight: 300;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--ivory);
+      margin-bottom: 16px;
+    }
+
+    .footer-brand-name span {
+      color: var(--gold);
+    }
+
+    .footer-tagline {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 0.9rem;
+      color: rgba(248, 245, 242, 0.3);
+      margin-bottom: 28px;
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 14px;
+    }
+
+    .social-link {
+      width: 38px;
+      height: 38px;
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      color: rgba(248, 245, 242, 0.5);
+      font-size: 0.8rem;
+      transition: border-color 0.3s, color 0.3s;
+    }
+
+    .social-link:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+
+    .footer-col h4 {
+      font-size: 0.62rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 22px;
+    }
+
+    .footer-col ul {
+      list-style: none;
+    }
+
+    .footer-col ul li {
+      margin-bottom: 12px;
+    }
+
+    .footer-col ul a {
+      font-size: 0.82rem;
+      color: rgba(248, 245, 242, 0.4);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .footer-col ul a:hover {
+      color: var(--ivory);
+    }
+
+    .footer-col p {
+      font-size: 0.82rem;
+      color: rgba(248, 245, 242, 0.4);
+      line-height: 1.8;
+    }
+
+    .footer-bottom {
+      max-width: 1200px;
+      margin: 60px auto 0;
+      padding-top: 28px;
+      border-top: 1px solid rgba(198, 167, 105, 0.08);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .footer-bottom p {
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      color: rgba(248, 245, 242, 0.2);
+    }
+
+    .footer-bottom a {
+      color: var(--gold);
+      text-decoration: none;
+    }
+
+    /* ── Mobile ── */
+    @media (max-width: 1024px) {
+      nav {
+        padding: 22px 32px;
+      }
+
+      nav.scrolled {
+        padding: 16px 32px;
+      }
+
+      section {
+        padding: 80px 32px;
+      }
+
+      .about-inner {
+        grid-template-columns: 1fr;
+        gap: 60px;
+      }
+
+      .about-visual {
+        aspect-ratio: 4/3;
+      }
+
+      .collections-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .collections-grid .collection-card:first-child {
+        grid-column: span 2;
+        aspect-ratio: 16/9;
+      }
+
+      .concept-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .concept-left {
+        padding-right: 0;
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+        padding-bottom: 60px;
+        margin-bottom: 60px;
+      }
+
+      .concept-right {
+        padding-left: 0;
+      }
+
+      .gallery-grid {
+        grid-template-columns: repeat(6, 1fr);
+        grid-template-rows: repeat(3, 200px);
+      }
+
+      .gallery-cell:nth-child(1) {
+        grid-column: span 6;
+        grid-row: span 1;
+      }
+
+      .gallery-cell:nth-child(2) {
+        grid-column: span 3;
+      }
+
+      .gallery-cell:nth-child(3) {
+        grid-column: span 3;
+      }
+
+      .gallery-cell:nth-child(4) {
+        grid-column: span 3;
+      }
+
+      .gallery-cell:nth-child(5) {
+        grid-column: span 3;
+      }
+
+      .testimonials-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .form-field.full,
+      .form-submit {
+        grid-column: span 1;
+      }
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        padding: 20px 24px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+
+      .hero-title {
+        font-size: 2.8rem;
+        line-height: 1.1;
+      }
+      
+      .hero-subtitle {
+        font-size: 1.1rem;
+        margin: 16px 0 32px;
+      }
+      
+      .hero-btn {
+        padding: 14px 36px;
+      }
+
+      .section-title {
+        font-size: 2.4rem;
+      }
+
+      section {
+        padding: 70px 24px;
+      }
+
+      #cta {
+        padding: 100px 24px;
+      }
+
+      #order {
+        padding: 70px 24px;
+      }
+
+      footer {
+        padding: 60px 24px 32px;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .collections-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .collections-grid .collection-card:first-child {
+        grid-column: span 1;
+        aspect-ratio: 4/5;
+      }
+
+      .about-stats {
+        flex-wrap: wrap;
+        gap: 28px;
+        justify-content: center;
+        text-align: center;
+      }
+
+      .stat-num {
+        font-size: 2.2rem;
+      }
+
+      body {
+        cursor: auto;
+      }
+
+      .cursor {
+        display: none;
+      }
+    }
+
+    /* ── Mobile Nav ── */
+    .mobile-nav {
+      position: fixed;
+      inset: 0;
+      z-index: 98;
+      background: rgba(11, 11, 11, 0.98);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 32px;
+      transform: translateX(100%);
+      transition: transform 0.5s cubic-bezier(.77, 0, .18, 1);
+    }
+
+    .mobile-nav.open {
+      transform: translateX(0);
+    }
+
+    .mobile-nav a {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.2rem;
+      font-weight: 300;
+      color: var(--ivory);
+      text-decoration: none;
+      letter-spacing: 0.08em;
+      transition: color 0.3s;
+    }
+
+    .mobile-nav a:hover {
+      color: var(--gold);
+    }
+
+    .ham-close {
+      position: absolute;
+      top: 22px;
+      right: 24px;
+      font-size: 1.4rem;
+      color: var(--ivory);
+      cursor: none;
+      background: none;
+      border: none;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Cursor -->
+  <div class="cursor" id="cursor">
+    <div class="cursor-ring" id="cursorRing"></div>
+    <div class="cursor-dot" id="cursorDot"></div>
+  </div>
+
+  <!-- Mobile Nav -->
+  <div class="mobile-nav" id="mobileNav">
+    <button class="ham-close" id="hamClose">✕</button>
+    <a href="#about" onclick="closeMobileNav()">About</a>
+    <a href="#collections" onclick="closeMobileNav()">Collections</a>
+    <a href="#concept" onclick="closeMobileNav()">Our Story</a>
+
+    <a href="#order" onclick="closeMobileNav()">Custom Order</a>
+  </div>
+
+  <!-- Nav -->
+  <nav id="navbar">
+    <a href="#" class="nav-logo">Beena's Closet</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#collections">Collections</a></li>
+      <li><a href="#concept">Our Story</a></li>
+
+      <li><a href="#order" class="nav-cta">Custom Order</a></li>
+    </ul>
+    <div class="hamburger" id="hamburger">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-ornament"></div>
+
+    <!-- Falling petals -->
+    <div class="hero-petal" style="left:12%;animation-delay:0s;animation-duration:9s">✨</div>
+    <div class="hero-petal" style="left:28%;animation-delay:2s;animation-duration:7s">💎</div>
+    <div class="hero-petal" style="left:52%;animation-delay:4s;animation-duration:8s">💍</div>
+    <div class="hero-petal" style="left:74%;animation-delay:1s;animation-duration:10s">✨</div>
+    <div class="hero-petal" style="left:88%;animation-delay:3s;animation-duration:7.5s">💎</div>
+
+    <div class="hero-content">
+      <p class="hero-eyebrow">High-End Luxury Boutique</p>
+      <h1 class="hero-title">Beena's Closet</h1>
+      <p class="hero-subtitle">Timeless Elegance, Just for You</p>
+      <a href="#collections" class="hero-btn"><span>Explore Collection</span></a>
+    </div>
+    <div class="hero-scroll">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- Marquee -->
+  <div class="marquee-wrap">
+    <div class="marquee-track" id="marqueeTrack">
+      <div class="marquee-item">Royal Kundan Sets<span class="marquee-dot"></span></div>
+      <div class="marquee-item">Timeless Elegance<span class="marquee-dot"></span></div>
+      <div class="marquee-item">Fine Jewelry<span class="marquee-dot"></span></div>
+      <div class="marquee-item">Heritage Harams<span class="marquee-dot"></span></div>
+      <div class="marquee-item">Gold Plated Chokers<span class="marquee-dot"></span></div>
+      <div class="marquee-item">Luxury Chains<span class="marquee-dot"></span></div>
+      <div class="marquee-item">Royal Kundan Sets<span class="marquee-dot"></span></div>
+      <div class="marquee-item">Timeless Elegance<span class="marquee-dot"></span></div>
+      <div class="marquee-item">Fine Jewelry<span class="marquee-dot"></span></div>
+      <div class="marquee-item">Heritage Harams<span class="marquee-dot"></span></div>
+      <div class="marquee-item">Gold Plated Chokers<span class="marquee-dot"></span></div>
+      <div class="marquee-item">Luxury Chains<span class="marquee-dot"></span></div>
+    </div>
+  </div>
+
+  <!-- About -->
+  <section id="about">
+    <div class="about-inner">
+      <div class="about-visual reveal">
+        <div class="about-frame">
+          <div class="about-corner tl"></div>
+          <div class="about-corner tr"></div>
+          <div class="about-corner bl"></div>
+          <div class="about-corner br"></div>
+          <div class="about-img-placeholder" style="display: block; padding: 0;">
+            <img src="ITEMS/WhatsApp%20Image%202026-05-17%20at%2010.09.08%20PM.jpeg" alt="Beena John - Founder of Beena's Closet" style="width: 100%; height: 100%; object-fit: cover; filter: grayscale(10%) contrast(105%); transition: transform 0.8s;">
+          </div>
+        </div>
+      </div>
+      <div class="about-text">
+        <p class="section-eyebrow reveal">The Founder</p>
+        <h2 class="section-title reveal reveal-delay-1">Beena John Balaji<br><em>The Visionary</em></h2>
+        <div class="gold-line reveal reveal-delay-2"></div>
+        <p class="reveal reveal-delay-2">Beena's Closet was born from the passion of <strong>Beena John Balaji</strong>, who curates and creates fine, high-end handcrafted jewelry. Balancing her life between <strong>Mumbai, India</strong> and the <strong>United States</strong>, Beena brings a rich global perspective and a deep appreciation for heritage to each design.</p>
+        <p class="reveal reveal-delay-3">Every piece in our jewelry collection is a <strong>masterpiece of devotion</strong> — meticulously designed with premium stones, royal Kundan craft, and brilliant gold plating to complement your elegance. Our collections bring the grandeur of traditional royalty together with the sleek minimalism of contemporary luxury.</p>
+        <p class="reveal reveal-delay-3">Serving discerning clients across the globe, we are committed to making fine designer jewelry accessible, elegant, and timeless.</p>
+        <div class="about-stats reveal reveal-delay-4">
+          <div>
+            <div class="stat-num">5k+</div>
+            <div class="stat-label">Clients Served</div>
+          </div>
+          <div>
+            <div class="stat-num">100%</div>
+            <div class="stat-label">Premium Quality</div>
+          </div>
+          <div>
+            <div class="stat-num">15+</div>
+            <div class="stat-label">Countries</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Collections -->
+  <section id="collections">
+    <div class="collections-header">
+      <div>
+        <p class="section-eyebrow reveal">Curated for You</p>
+        <h2 class="section-title reveal reveal-delay-1">The <em>Collections</em></h2>
+        <div class="gold-line reveal reveal-delay-2" style="background: linear-gradient(to right,#A88A50,transparent)">
+        </div>
+      </div>
+      <p class="collections-intro reveal reveal-delay-2">Exquisite handcrafted necklaces, chains, harams, and choker sets designed to complement your elegance with timeless sophistication.</p>
+    </div>
+    <div class="collections-grid">
+      <!-- Item 1 (Featured) -->
+      <div class="collection-card reveal">
+        <div class="card-bg" style="background: linear-gradient(to top, rgba(11, 11, 11, 0.85), rgba(11, 11, 11, 0.15)), url('ITEMS/Bridal%20Kundan%20Choker%20Necklace%20Set%20With%20Maang%20Tikka%20-%20RS999.jpeg') center/cover no-repeat;"></div>
+        <div class="card-icon">💎</div>
+        <div class="card-content">
+          <p class="card-tag">Royal Kundan Set</p>
+          <h3 class="card-title">Bridal Kundan Choker Set<br><span style="color: var(--gold); font-weight: 500;">Rs. 999</span></h3>
+          <p class="card-desc">Exquisite choker set complete with matching earrings and Maang Tikka, designed for majestic elegance.</p>
+          <a href="https://wa.me/919833413036?text=Hi%20Beena,%20I%20am%20interested%20in%20the%20Bridal%20Kundan%20Choker%20Necklace%20Set%20(Rs.%20999)" target="_blank" class="card-link">Order on WhatsApp</a>
+        </div>
+      </div>
+      <!-- Item 2 -->
+      <div class="collection-card reveal reveal-delay-1">
+        <div class="card-bg" style="background: linear-gradient(to top, rgba(11, 11, 11, 0.85), rgba(11, 11, 11, 0.15)), url('ITEMS/Lekshmi%20Haram%20Rs599%20.jpeg') center/cover no-repeat;"></div>
+        <div class="card-icon">✨</div>
+        <div class="card-content">
+          <p class="card-tag">Traditional Gold</p>
+          <h3 class="card-title">Lekshmi Haram<br><span style="color: var(--gold); font-weight: 500;">Rs. 599</span></h3>
+          <p class="card-desc">Classic heritage design showcasing goddess Laxmi motifs in brilliant gold plating.</p>
+          <a href="https://wa.me/919833413036?text=Hi%20Beena,%20I%20am%20interested%20in%20the%20Lekshmi%20Haram%20(Rs.%20599)" target="_blank" class="card-link">Order on WhatsApp</a>
+        </div>
+      </div>
+      <!-- Item 3 -->
+      <div class="collection-card reveal reveal-delay-2">
+        <div class="card-bg" style="background: linear-gradient(to top, rgba(11, 11, 11, 0.85), rgba(11, 11, 11, 0.15)), url('ITEMS/Luxury%20Kette%20Rs899.jpeg') center/cover no-repeat;"></div>
+        <div class="card-icon">💍</div>
+        <div class="card-content">
+          <p class="card-tag">Contemporary Chic</p>
+          <h3 class="card-title">Luxury Kette<br><span style="color: var(--gold); font-weight: 500;">Rs. 899</span></h3>
+          <p class="card-desc">Sleek, high-end designer chain designed to add subtle luxury to your daily wear.</p>
+          <a href="https://wa.me/919833413036?text=Hi%20Beena,%20I%20am%20interested%20in%20the%20Luxury%20Kette%20(Rs.%20899)" target="_blank" class="card-link">Order on WhatsApp</a>
+        </div>
+      </div>
+      <!-- Item 4 -->
+      <div class="collection-card reveal">
+        <div class="card-bg" style="background: linear-gradient(to top, rgba(11, 11, 11, 0.85), rgba(11, 11, 11, 0.15)), url('ITEMS/Mughal%20Inspired%20Necklace%20Set%20Rs999%20(2).jpeg') center/cover no-repeat;"></div>
+        <div class="card-icon">👑</div>
+        <div class="card-content">
+          <p class="card-tag">Imperial Heritage</p>
+          <h3 class="card-title">Mughal Inspired Set<br><span style="color: var(--gold); font-weight: 500;">Rs. 999</span></h3>
+          <p class="card-desc">A masterpiece reflecting imperial design, embedded with intricate motifs and stones.</p>
+          <a href="https://wa.me/919833413036?text=Hi%20Beena,%20I%20am%20interested%20in%20the%20Mughal%20Inspired%20Necklace%20Set%20(Rs.%20999)" target="_blank" class="card-link">Order on WhatsApp</a>
+        </div>
+      </div>
+      <!-- Item 5 -->
+      <div class="collection-card reveal reveal-delay-1">
+        <div class="card-bg" style="background: linear-gradient(to top, rgba(11, 11, 11, 0.85), rgba(11, 11, 11, 0.15)), url('ITEMS/Pearl%20Kette%20-%20Rs199%20.jpeg') center/cover no-repeat;"></div>
+        <div class="card-icon">💎</div>
+        <div class="card-content">
+          <p class="card-tag">Timeless Pearls</p>
+          <h3 class="card-title">Pearl Kette<br><span style="color: var(--gold); font-weight: 500;">Rs. 199</span></h3>
+          <p class="card-desc">Delicate and elegant pearl chain, a minimalist statement of refined grace.</p>
+          <a href="https://wa.me/919833413036?text=Hi%20Beena,%20I%20am%20interested%20in%20the%20Pearl%20Kette%20(Rs.%20199)" target="_blank" class="card-link">Order on WhatsApp</a>
+        </div>
+      </div>
+      <!-- Item 6 -->
+      <div class="collection-card reveal reveal-delay-2">
+        <div class="card-bg" style="background: linear-gradient(to top, rgba(11, 11, 11, 0.85), rgba(11, 11, 11, 0.15)), url('ITEMS/Rajasthani%20Style%20Gold%20Plated%20Necklace-Rs599.jpeg') center/cover no-repeat;"></div>
+        <div class="card-icon">✨</div>
+        <div class="card-content">
+          <p class="card-tag">Ethnic Royalty</p>
+          <h3 class="card-title">Rajasthani Gold Plated Set<br><span style="color: var(--gold); font-weight: 500;">Rs. 599</span></h3>
+          <p class="card-desc">Rajasthani craftsmanship in brilliant gold plating, reflecting royal heritage.</p>
+          <a href="https://wa.me/919833413036?text=Hi%20Beena,%20I%20am%20interested%20in%20the%20Rajasthani%20Style%20Gold%20Plated%20Necklace%20(Rs.%20599)" target="_blank" class="card-link">Order on WhatsApp</a>
+        </div>
+      </div>
+      <!-- Item 7 -->
+      <div class="collection-card reveal reveal-delay-3">
+        <div class="card-bg" style="background: linear-gradient(to top, rgba(11, 11, 11, 0.85), rgba(11, 11, 11, 0.15)), url('ITEMS/Red%20and%20Green%20Stone%20Gold%20Plated%20Necklace-Rs499.jpeg') center/cover no-repeat;"></div>
+        <div class="card-icon">🌸</div>
+        <div class="card-content">
+          <p class="card-tag">Traditional Festive</p>
+          <h3 class="card-title">Red &amp; Green Stone Gold Set<br><span style="color: var(--gold); font-weight: 500;">Rs. 499</span></h3>
+          <p class="card-desc">Vibrant red and green stones set in stunning gold plating, perfect for festive celebrations.</p>
+          <a href="https://wa.me/919833413036?text=Hi%20Beena,%20I%20am%20interested%20in%20the%20Red%20and%20Green%20Stone%20Gold%20Plated%20Necklace%20(Rs.%20499)" target="_blank" class="card-link">Order on WhatsApp</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Concept -->
+  <section id="concept">
+    <div class="concept-grid">
+      <div class="concept-left">
+        <p class="section-eyebrow reveal">The Beena's Closet Promise</p>
+        <h2 class="section-title reveal reveal-delay-1">Timeless<br>Jewelry<br><em>Legacy</em></h2>
+        <p class="concept-tagline reveal reveal-delay-2">"Elegance is an attitude."</p>
+        <p class="reveal reveal-delay-3" style="color:rgba(248,245,242,0.5);line-height:1.9;font-size:0.92rem;">At Beena's Closet, we believe your jewelry should transcend fleeting trends. Every ornament we curate is an heirloom — a statement piece that travels with you through decades, as beautiful years from now as it is today.</p>
+      </div>
+      <div class="concept-right">
+        <div class="concept-pillars">
+          <div class="pillar reveal">
+            <div class="pillar-num">01</div>
+            <div>
+              <h3 class="pillar-title">Heritage Royal Craftsmanship</h3>
+              <p class="pillar-text">From intricate Kundan work to classic Mughal motifs and heritage Lekshmi Haram designs, each piece is crafted with extreme precision and gold plating that preserves its royal shine.</p>
+            </div>
+          </div>
+          <div class="pillar reveal reveal-delay-1">
+            <div class="pillar-num">02</div>
+            <div>
+              <h3 class="pillar-title">Global Elegance &amp; Grace</h3>
+              <p class="pillar-text">Bridging the vibrant designs of Mumbai and the modern aesthetic of the United States, our jewelry fits seamlessly into grand Indian weddings and contemporary international celebrations.</p>
+            </div>
+          </div>
+          <div class="pillar reveal reveal-delay-2">
+            <div class="pillar-num">03</div>
+            <div>
+              <h3 class="pillar-title">Designed for Your Memories</h3>
+              <p class="pillar-text">Our jewelry is made to last a lifetime. Whether it is a minimalist pearl chain or an imperial choker set, we use premium materials so you can wear them beautifully for generations.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- Testimonials -->
+  <section id="testimonials">
+    <div class="testimonials-wrap">
+      <p class="section-eyebrow reveal">Client Stories</p>
+      <h2 class="section-title reveal reveal-delay-1" style="color:var(--black)">What <em>They</em> Say</h2>
+      <div class="gold-line reveal reveal-delay-2"
+        style="background:linear-gradient(to right,var(--gold-dark),transparent)"></div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card reveal">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">"The Bridal Kundan Choker Set I ordered for my wedding was breathtaking. The detailing on the maang tikka and earrings was so royal and exquisite. Beena's Closet gave me the look of my dreams!"</p>
+          <p class="testimonial-author">Priya Sharma</p>
+          <p class="testimonial-role">Mumbai, India</p>
+        </div>
+        <div class="testimonial-card reveal reveal-delay-1">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">"I received my Lekshmi Haram in Ireland and the shine is absolutely gorgeous. The traditional design and gold plating look incredibly premium. The packing was very neat without any damage.Highly recommend Beena John's curated creations!"</p>
+          <p class="testimonial-author">Jennifer Jose</p>
+          <p class="testimonial-role">Dublin, Ireland</p>
+        </div>
+        <div class="testimonial-card reveal reveal-delay-2">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">"The Mughal Inspired Necklace Set is stunning. It has this perfect balance of old-world royalty and premium quality. Truly beautiful."</p>
+          <p class="testimonial-author">Clifford</p>
+          <p class="testimonial-role">Thiruvalla, India</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section id="cta">
+    <div class="cta-inner">
+      <p class="section-eyebrow reveal">Your Look. Your Vision.</p>
+      <h2 class="cta-title reveal reveal-delay-1">Custom <em>Jewelry</em><br>Inquiries</h2>
+      <p class="cta-sub reveal reveal-delay-2">Every masterpiece begins with a conversation. Connect with Beena John directly via WhatsApp to discuss custom designs, sizing, and global shipping to India, US, and beyond.</p>
+      <a href="https://wa.me/919833413036" target="_blank" class="cta-btn reveal reveal-delay-3"><span>Message on WhatsApp</span></a>
+    </div>
+  </section>
+
+  <!-- Order Form -->
+  <section id="order">
+    <div class="order-inner">
+      <div class="order-header">
+        <p class="section-eyebrow reveal">Begin Your Journey</p>
+        <h2 class="section-title reveal reveal-delay-1">Custom <em>Order</em> Request</h2>
+        <div class="gold-line reveal reveal-delay-2"></div>
+        <p class="reveal reveal-delay-2"
+          style="color:rgba(248,245,242,0.45);font-size:0.88rem;line-height:1.9;max-width:560px;">Share your style details and we will reach out within 48 hours to begin crafting your perfect outfit. Every inquiry is handled
+          personally.</p>
+      </div>
+      <div class="form-grid reveal reveal-delay-2">
+        <div class="form-field">
+          <label>Your Name</label>
+          <input type="text" placeholder="e.g. Priya Sharma">
+        </div>
+        <div class="form-field">
+          <label>Email Address</label>
+          <input type="email" placeholder="hello@email.com">
+        </div>
+        <div class="form-field">
+          <label>Phone / WhatsApp</label>
+          <input type="tel" placeholder="+91 or +49...">
+        </div>
+        <div class="form-field">
+          <label>Event Date (If applicable)</label>
+          <input type="date">
+        </div>
+        <div class="form-field">
+          <label>I Am Interested In</label>
+          <select>
+            <option value="">Select a piece</option>
+            <option>Bridal Kundan Choker Set (Rs. 999)</option>
+            <option>Lekshmi Haram (Rs. 599)</option>
+            <option>Luxury Kette (Rs. 899)</option>
+            <option>Mughal Inspired Necklace Set (Rs. 999)</option>
+            <option>Pearl Kette (Rs. 199)</option>
+            <option>Rajasthani Style Gold Plated Necklace (Rs. 599)</option>
+            <option>Red and Green Stone Gold Plated Necklace (Rs. 499)</option>
+            <option>Custom Jewelry Piece</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label>Budget Range</label>
+          <select>
+            <option value="">Select range</option>
+            <option>Under ₹500</option>
+            <option>₹500–₹1,000</option>
+            <option>₹1,000–₹5,000</option>
+            <option>₹5,000+</option>
+          </select>
+        </div>
+        <div class="form-field full">
+          <label>Tell Us Your Vision</label>
+          <textarea
+            placeholder="Describe your personal style, color palette, fabric preferences, or any inspiration you have in mind..."></textarea>
+        </div>
+        <button class="form-submit" onclick="window.location.href='mailto:beenabalaji0@gmail.com?subject=Beena\'s Closet Custom Order Inquiry'">Send My Request →</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand-name">Beena's Closet</div>
+        <p class="footer-tagline">Timeless Elegance, Just for You</p>
+        <div class="footer-social">
+          <a href="https://www.instagram.com/beena.scloset?igsh=MW50N2Jkc2trbGdwMg==" target="_blank" class="social-link" title="Instagram">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <rect x="2" y="2" width="20" height="20" rx="5" />
+              <circle cx="12" cy="12" r="5" />
+              <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
+            </svg>
+          </a>
+          <a href="https://wa.me/919833413036" target="_blank" class="social-link" title="WhatsApp">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M12 2C6.48 2 2 6.48 2 12c0 1.77.46 3.43 1.27 4.88L2 22l5.25-1.26A9.95 9.95 0 0012 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm5.07 14.41c-.22.62-1.28 1.18-1.77 1.25-.48.07-1.07.1-1.73-.11-.4-.13-.9-.3-1.56-.58-2.73-1.19-4.5-3.94-4.63-4.12-.13-.18-1.06-1.42-1.06-2.7 0-1.28.67-1.91 1-2.08.27-.15.6-.19.8-.19h.58c.19 0 .44-.07.69.52.25.6.86 2.1.93 2.25.07.15.12.33.02.52-.1.2-.15.33-.29.5-.14.18-.29.4-.42.53-.14.15-.28.3-.12.6.17.3.74 1.22 1.58 1.97.58.52 1.08.7 1.4.8.31.1.5.08.68-.04.19-.12.79-.93.99-1.25.2-.32.4-.26.67-.16.27.1 1.72.81 2.02.96.29.15.49.23.56.35.07.12.07.72-.15 1.34z" />
+            </svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Collections</h4>
+        <ul>
+          <li><a href="#collections">Kundan Chokers</a></li>
+          <li><a href="#collections">Heritage Harams</a></li>
+          <li><a href="#collections">Luxury Kettes</a></li>
+          <li><a href="#collections">Pearl Chains</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Locations</h4>
+        <p>Beena's Closet</p>
+        <p>Nazerath House, A/18,</p>
+        <p>Sector 6, New Panevel</p>
+        <p>Mumbai, India</p>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <p><a href="https://wa.me/919833413036" target="_blank" style="color:var(--gold);text-decoration:none;">+91 9833413036</a></p>
+        <p style="margin-top:10px;"><a href="https://www.instagram.com/beena.scloset?igsh=MW50N2Jkc2trbGdwMg==" target="_blank"
+            style="color:var(--gold);text-decoration:none;">@beena.scloset</a></p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Beena's Closet. All rights reserved.</p>
+      <p>Crafted with devotion for those who deserve true luxury.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Cursor
+    const cursorDot = document.getElementById('cursorDot');
+    const cursorRing = document.getElementById('cursorRing');
+    let mx = 0, my = 0, rx = 0, ry = 0;
+
+    document.addEventListener('mousemove', e => {
+      mx = e.clientX; my = e.clientY;
+      cursorDot.style.left = mx + 'px';
+      cursorDot.style.top = my + 'px';
+    });
+
+    function animateCursor() {
+      rx += (mx - rx) * 0.12;
+      ry += (my - ry) * 0.12;
+      cursorRing.style.left = rx + 'px';
+      cursorRing.style.top = ry + 'px';
+      requestAnimationFrame(animateCursor);
+    }
+    animateCursor();
+
+    document.querySelectorAll('a, button, .collection-card, .gallery-cell').forEach(el => {
+      el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
+      el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
+    });
+
+    // Navbar scroll
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 60);
+    });
+
+    // Hamburger
+    const hamburger = document.getElementById('hamburger');
+    const mobileNav = document.getElementById('mobileNav');
+    const hamClose = document.getElementById('hamClose');
+
+    hamburger.addEventListener('click', () => mobileNav.classList.add('open'));
+    hamClose.addEventListener('click', () => mobileNav.classList.remove('open'));
+
+    function closeMobileNav() { mobileNav.classList.remove('open'); }
+
+    // Reveal on scroll
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+    reveals.forEach(el => observer.observe(el));
+
+    // Form submit
+    const formSubmit = document.querySelector('.form-submit');
+    if (formSubmit) {
+      formSubmit.addEventListener('click', () => {
+        const inputs = document.querySelectorAll('#order input, #order select, #order textarea');
+        const name = inputs[0].value.trim();
+        const email = inputs[1].value.trim();
+        if (!name || !email) {
+          formSubmit.textContent = 'Please fill in your name and email ✕';
+          setTimeout(() => formSubmit.textContent = 'Send My Request →', 2500);
+          return;
+        }
+        formSubmit.textContent = 'Thank You — We Will Be In Touch ✓';
+        formSubmit.style.background = '#2a4a2a';
+        formSubmit.style.color = '#aed6ae';
+        inputs.forEach(i => i.value = '');
+        setTimeout(() => {
+          formSubmit.textContent = 'Send My Request →';
+          formSubmit.style.background = '';
+          formSubmit.style.color = '';
+        }, 4000);
+      });
+    }
+
+    // Smooth anchor scroll with offset
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const target = document.querySelector(a.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          const y = target.getBoundingClientRect().top + window.scrollY - 80;
+          window.scrollTo({ top: y, behavior: 'smooth' });
+        }
+      });
+    });
+  </script>
+</body>
+
+</html>
