@@ -176,16 +176,40 @@
     .hamburger {
       display: none;
       flex-direction: column;
-      gap: 5px;
-      cursor: none;
+      justify-content: space-between;
+      width: 24px;
+      height: 14px;
+      cursor: pointer;
+      z-index: 1001;
     }
 
     .hamburger span {
       display: block;
-      width: 24px;
+      width: 100%;
       height: 1px;
       background: var(--ivory);
-      transition: 0.3s;
+      transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.3s, background-color 0.3s;
+      transform-origin: center;
+    }
+
+    nav.menu-open .hamburger span:nth-child(1) {
+      transform: translateY(6.5px) rotate(45deg);
+      background: var(--gold);
+    }
+
+    nav.menu-open .hamburger span:nth-child(2) {
+      opacity: 0;
+    }
+
+    nav.menu-open .hamburger span:nth-child(3) {
+      transform: translateY(-6.5px) rotate(-45deg);
+      background: var(--gold);
+    }
+
+    nav.menu-open {
+      background: transparent !important;
+      border-bottom: none !important;
+      backdrop-filter: none !important;
     }
 
     /* ── Hero ── */
@@ -837,6 +861,50 @@
       color: var(--gold);
       line-height: 1.2;
       margin: 32px 0 48px;
+    }
+
+    .concept-returns {
+      margin-top: 48px;
+      padding-top: 40px;
+      border-top: 1px solid var(--border);
+    }
+
+    .concept-returns h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      font-weight: 300;
+      color: var(--gold);
+      margin-bottom: 22px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .concept-returns p {
+      font-size: 0.88rem;
+      line-height: 1.8;
+      color: rgba(248, 245, 242, 0.55);
+      margin-bottom: 16px;
+    }
+
+    .concept-returns p strong {
+      color: var(--gold);
+      font-weight: 400;
+    }
+
+    .concept-returns p:last-child {
+      margin-bottom: 0;
+    }
+
+    .concept-returns-link {
+      color: var(--gold);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(198, 167, 105, 0.3);
+      transition: border-color 0.3s, color 0.3s;
+    }
+
+    .concept-returns-link:hover {
+      border-bottom-color: var(--gold);
+      color: var(--ivory);
     }
 
     .concept-right {
@@ -1503,6 +1571,7 @@
 
       .collections-grid {
         grid-template-columns: 1fr;
+        gap: 32px;
       }
 
       .collections-grid .collection-card:first-child {
@@ -1510,15 +1579,12 @@
         aspect-ratio: 4/5;
       }
 
-      .about-stats {
-        flex-wrap: wrap;
-        gap: 28px;
-        justify-content: center;
-        text-align: center;
+      .gallery-grid {
+        gap: 12px;
       }
 
-      .stat-num {
-        font-size: 2.2rem;
+      .testimonials-grid {
+        gap: 28px;
       }
 
       body {
@@ -1534,44 +1600,92 @@
     .mobile-nav {
       position: fixed;
       inset: 0;
-      z-index: 98;
-      background: rgba(11, 11, 11, 0.98);
+      z-index: 99;
+      background: radial-gradient(circle at 50% 50%, rgba(198, 167, 105, 0.06) 0%, rgba(11, 11, 11, 0.99) 100%);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 32px;
-      transform: translateX(100%);
-      transition: transform 0.5s cubic-bezier(.77, 0, .18, 1);
+      gap: 28px;
+      transform: translateY(-100%);
+      opacity: 0;
+      pointer-events: none;
+      transition: transform 0.6s cubic-bezier(0.85, 0, 0.15, 1), opacity 0.6s cubic-bezier(0.85, 0, 0.15, 1);
     }
 
     .mobile-nav.open {
-      transform: translateX(0);
+      transform: translateY(0);
+      opacity: 1;
+      pointer-events: auto;
     }
 
     .mobile-nav a {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 2.2rem;
+      font-size: 2rem;
       font-weight: 300;
       color: var(--ivory);
       text-decoration: none;
-      letter-spacing: 0.08em;
-      transition: color 0.3s;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      transition: color 0.4s, transform 0.4s, opacity 0.4s;
+      position: relative;
+      opacity: 0;
+      transform: translateY(20px);
     }
 
-    .mobile-nav a:hover {
+    .mobile-nav.open a {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .mobile-nav.open a:nth-child(1) { transition-delay: 0.05s; }
+    .mobile-nav.open a:nth-child(2) { transition-delay: 0.10s; }
+    .mobile-nav.open a:nth-child(3) { transition-delay: 0.15s; }
+    .mobile-nav.open a:nth-child(4) { transition-delay: 0.20s; }
+
+    .mobile-nav a:hover, .mobile-nav a:active {
       color: var(--gold);
+      transform: scale(1.05);
     }
 
-    .ham-close {
+    .mobile-nav a::after {
+      content: '';
       position: absolute;
-      top: 22px;
-      right: 24px;
-      font-size: 1.4rem;
-      color: var(--ivory);
-      cursor: none;
-      background: none;
-      border: none;
+      bottom: -6px;
+      left: 50%;
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--gold);
+      transform: translateX(-50%) scale(0);
+      transition: transform 0.3s;
+    }
+
+    .mobile-nav a:hover::after {
+      transform: translateX(-50%) scale(1);
+    }
+
+    .mobile-nav-cta {
+      font-family: 'Jost', sans-serif !important;
+      font-size: 0.72rem !important;
+      letter-spacing: 0.25em !important;
+      color: var(--gold) !important;
+      border: 1px solid rgba(198, 167, 105, 0.4);
+      padding: 12px 32px;
+      margin-top: 14px;
+      transition: background 0.4s, color 0.4s, border-color 0.4s !important;
+    }
+
+    .mobile-nav-cta:hover {
+      background: var(--gold);
+      color: var(--black) !important;
+      border-color: var(--gold);
+    }
+
+    .mobile-nav-cta::after {
+      display: none !important;
     }
   </style>
 </head>
@@ -1586,12 +1700,10 @@
 
   <!-- Mobile Nav -->
   <div class="mobile-nav" id="mobileNav">
-    <button class="ham-close" id="hamClose">✕</button>
     <a href="#about" onclick="closeMobileNav()">About</a>
     <a href="#collections" onclick="closeMobileNav()">Collections</a>
     <a href="#concept" onclick="closeMobileNav()">Our Story</a>
-
-    <a href="#order" onclick="closeMobileNav()">Custom Order</a>
+    <a href="#order" onclick="closeMobileNav()" class="mobile-nav-cta">Custom Order</a>
   </div>
 
   <!-- Nav -->
@@ -1775,6 +1887,16 @@
       <div class="concept-left">
         <p class="section-eyebrow reveal">The Beena's Closet Promise</p>
         <p class="concept-tagline reveal reveal-delay-2">We believe every woman deserves to enjoy traditional Indian elegance without the heavy luxury price tag.</p>
+        
+        <div class="concept-returns reveal reveal-delay-3">
+          <h3>Returns &amp; Exchanges</h3>
+          <p>We want you to love your purchase from Beena’s Closet.</p>
+          <p>Customers within India may request a return or exchange within <strong>7 days</strong> of receiving the order. International customers may request a return within <strong>15 days</strong> of delivery.</p>
+          <p>Please contact us by email before returning any item. Returned products must be unused and in their original packaging and original condition. Returns or exchanges will not be accepted for items that are damaged, worn, altered, or not returned in as-is condition.</p>
+          <p>For international returns, customers outside India are responsible for the return shipping costs.</p>
+          <p>For all return requests and assistance, please <a href="mailto:beenabalaji0@gmail.com?subject=Beena's%20Closet%20Return/Exchange%20Request" class="concept-returns-link">email us first</a> before shipping the item back.</p>
+        </div>
+      </div>
       <div class="concept-right">
         <div class="concept-pillars">
           <div class="pillar reveal">
@@ -1990,12 +2112,16 @@
     // Hamburger
     const hamburger = document.getElementById('hamburger');
     const mobileNav = document.getElementById('mobileNav');
-    const hamClose = document.getElementById('hamClose');
 
-    hamburger.addEventListener('click', () => mobileNav.classList.add('open'));
-    hamClose.addEventListener('click', () => mobileNav.classList.remove('open'));
+    hamburger.addEventListener('click', () => {
+      navbar.classList.toggle('menu-open');
+      mobileNav.classList.toggle('open');
+    });
 
-    function closeMobileNav() { mobileNav.classList.remove('open'); }
+    function closeMobileNav() {
+      navbar.classList.remove('menu-open');
+      mobileNav.classList.remove('open');
+    }
 
     // Reveal on scroll
     const reveals = document.querySelectorAll('.reveal');
