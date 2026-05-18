@@ -1,5 +1,6 @@
 <p align="center">
-  <img src="banner.jpg" alt="Beena's Closet Banner">
+  <img src="bannerbeenascloset
+    .jpg" alt="Beena's Closet Banner">
 </p>
 
 # BEENA'S CLOSET
